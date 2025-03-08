@@ -133,10 +133,10 @@
             map.addListener('click', function(event) {
                 const description = prompt("Enter a title for this location:");
                 if (description) {
-                    const category = prompt("Optional: Enter a category for this location (leave blank to skip):");
-                    const photoUrl = prompt("Optional: Enter a photo URL for this location (leave blank to skip):");
-                    const link = prompt("Optional: Enter a website link for this location (leave blank to skip):");
-                    placeMarker(event.latLng, map, description, category, photoUrl, link, markers);
+                    const category = prompt("Optional: Enter a category for your event (leave blank to skip):");
+                    const photoUrl = prompt("Optional: Enter a photo URL for your event (leave blank to skip):");
+                    const link = prompt("Optional: Enter an explanation for your event (leave blank to skip):");
+                    placeMarker(event.latLng, map, description, category, photoUrl, explanation, markers);
                 }
             });
         }
