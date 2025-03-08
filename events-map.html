@@ -135,14 +135,14 @@
                 if (description) {
                     const category = prompt("Optional: Enter a category for your event (leave blank to skip):");
                     const photoUrl = prompt("Optional: Enter a photo URL for your event (leave blank to skip):");
-                    const link = prompt("Optional: Enter an explanation for your event (leave blank to skip):");
+                    const explanation = prompt("Optional: Enter an explanation for your event (leave blank to skip):");
                     placeMarker(event.latLng, map, description, category, photoUrl, explanation, markers);
                 }
             });
         }
 
         // Function to place a marker at the clicked location
-        function placeMarker(location, map, description, category, photoUrl, link, markers) {
+        function placeMarker(location, map, description, category, photoUrl, explanation, markers) {
             // Create a new marker at the clicked location
             const marker = new google.maps.Marker({
                 position: location,
@@ -158,8 +158,8 @@
             if (photoUrl) {
                 infoContent += `<img src="${photoUrl}" alt="Location Photo" style="max-width: 200px; height: auto; margin-top: 10px;"><br>`;
             }
-            if (link) {
-                infoContent += `<a href="${link}" target="_blank">Visit Website</a>`;
+            if (explanation) {
+                 infoContent += `<strong>Explanation:</strong> ${category}<br>`;
             }
 
             // Add a "Add to Favorites" button to the info window
@@ -177,13 +177,13 @@
             });
 
             // Save the marker and its details to the array
-            markers.push({ marker, description, category, photoUrl, link });
+            markers.push({ marker, description, category, photoUrl, explanation });
 
             // Update category filters
             updateCategoryFilters(markers);
 
             // Optional: Log the details of the marker
-            console.log("Marker placed at:", location.lat(), location.lng(), "Description:", description, "Category:", category, "Photo URL:", photoUrl, "Link:", link);
+            console.log("Marker placed at:", location.lat(), location.lng(), "Description:", description, "Category:", category, "Photo URL:", photoUrl, "explanation:", explanation);
         }
 
         // Function to add a marker to favorites
